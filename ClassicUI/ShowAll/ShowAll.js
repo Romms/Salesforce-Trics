@@ -5,44 +5,39 @@ function makeMagick(){
     }
     $ = jQuery;
     
-    var arrows = $('.fewerMore a > .moreArrow');
+    var arrows = $('.bPageBlock .pbBody > .fewerMore a > .moreArrow');
     if (arrows.length) {
         var links = arrows.parent();
-        var links_tags = '';
                 
         links.each(function(){
             $this = $(this);
             var url = $this.attr('href');
             if(url.match(/(rowsperpage)=[0-9]*/g)){
                 url = url.replace(/(rowsperpage)=[0-9]*/g, "$1=1000000");
-                // var header = $this.closest('* > h1, * >  h2, * > h3');
-                // console.log(header);
                 
-                links_tags += '<a href="'+ url +'">Show All</a>';
-                
-    
+                $this.parent().append('&nbsp;<a href="'+ url +'">SHOW ALL</a>');
                 console.log(url);
             }
         });
-        
-        $('body').append(''+
-            '<div class="MoreLinksBlock" style="display: none;">' +
-                links_tags +
-                '<a href="#" class="close">x</a>' +
-            '</div>' +
-        '');    
-        
-        $('.MoreLinksBlock').stop().slideDown(100);
-        
-        $('.MoreLinksBlock .close').click(function(){
-            $(this).closest('.MoreLinksBlock').slideUp(100);
-            return false;
-        });
-        
-        setTimeout(function(){
-            $('.MoreLinksBlock').stop().slideUp(100);
-        }, 8000);
     }
+	
+	var nextOrPrevPage = $('.withFilter > .next');
+	nextOrPrevPage.each(function(){
+		$this = $(this);
+		$link = $this.find('a');
+		if($link.length > 0) {
+			$link = $($link.get(0));
+			var url = $link.attr('href');
+
+            if(url.match(/(rowsperpage)=[0-9]*/g) && url.match(/(Alsr)=[0-9]*/g)){
+                url = url.replace(/(rowsperpage)=[0-9]*/g, "$1=1000000");
+                url = url.replace(/(Alsr)=[0-9]*/g, "$1=0");
+                
+                $link.parent().append('&nbsp;|&nbsp;<a href="'+ url +'">SHOW ALL</a>');
+                console.log('second' + url);
+            }
+		}
+	});
 };
 
 makeMagick();
