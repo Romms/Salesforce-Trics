@@ -14,38 +14,38 @@ function makeMagick(){
             var url = $this.attr('href');
             if(url.match(/(%3Arowsperpage)=[0-9]*/g)){
                 url = url.replace(/(%3Arowsperpage)=[0-9]*/g, "$1=1000000");
-				url = url.replace(/(%3Alsr)=[0-9]*/g, "$1=0");
+                url = url.replace(/(%3Alsr)=[0-9]*/g, "$1=0");
                 
                 $this.parent().append('&nbsp;<a href="'+ url +'">SHOW ALL</a>');
                 console.log(url);
             }
         });
     }
-	
-	var nextOrPrevPage = $('.withFilter > .next');
-	nextOrPrevPage.each(function(){
-		$this = $(this);
-		$link = $this.find('a');
-		if($link.length > 0) {
-			$link = $($link.get(0));
-			var url = $link.attr('href');
+    
+    var nextOrPrevPage = $('.withFilter > .next');
+    nextOrPrevPage.each(function(){
+        $this = $(this);
+        $link = $this.find('a');
+        if($link.length > 0) {
+            $link = $($link.get(0));
+            var url = $link.attr('href');
 
             if(url.match(/(%3Alsr)=[0-9]*/g)){
                 url = url.replace(/(%3Alsr)=[0-9]*/g, "$1=0");
-				
+                
                 console.log('second' + url);
 
-				if(url.match(/(%3Arowsperpage)=[0-9]*/g)){
-					url = url.replace(/(%3Arowsperpage)=[0-9]*/g, "$1=1000000");
-				} else {
-					url = url.replace(/([&?]([^&]*%3A)(lsr)=[0-9]*)/g, "$1&$2rowsperpage=1000000");
-				}
+                if(url.match(/(%3Arowsperpage)=[0-9]*/g)){
+                    url = url.replace(/(%3Arowsperpage)=[0-9]*/g, "$1=1000000");
+                } else {
+                    url = url.replace(/([&?]([^&]*%3A)(lsr)=[0-9]*)/g, "$1&$2rowsperpage=1000000");
+                }
                 
                 $link.parent().append('&nbsp;|&nbsp;<a href="'+ url +'">SHOW ALL</a>');
                 console.log('second' + url);
             }
-		}
-	});
+        }
+    });
 };
 
 makeMagick();
