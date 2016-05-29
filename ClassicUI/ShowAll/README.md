@@ -1,6 +1,6 @@
 ### "Show All" button for SalesForce Classic
 
-This script adds "SHOW ALL" buttons for SalesForce Classic pages where are long lists with "show more" or "<Previous Page | Next Page>" links.
+This script adds "SHOW ALL" buttons for SalesForce Classic pages where are long lists with "show more" or "&lt;Previous Page | Next Page&gt;" links.
 
 
 You should add this JS to site as custom code.
