@@ -9,3 +9,5 @@ You should add this JS to site as custom code.
 You can do it with this Chrome plugin:
 
 * Custom JS: https://chrome.google.com/webstore/detail/custom-javascript-for-web/poakhlngfciodnhlhhgnaaelnpjljija
+
+![Example](examples/example.png)
